@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Genre{% endblock title %}
+{% block content %}
+<ul>
+    {% for type in genre %}
+        {% if type == 'Ski-Fi' %}
+            <a href="{% url 'genre-detail' 'SkiFi' %}">
+                <li>Ski-Fi</li>
+            </a>
+        {% else %}
+            <a href="{% url 'genre-detail' type %}">
+                <li>{{ type }}</li>
+            </a>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock content %}
