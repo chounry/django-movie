@@ -1,0 +1,52 @@
+
+
+ul {list-style: none;}
+
+.fav-re {padding: 10px 0 10px;font-size: 14px;font-weight: bold;background:rgb(64, 68, 77);}
+.fav-re .fav a {color:#f1f1f1;}
+.fav-re .fav a:hover{color:white;text-decoration: none;}
+.fav-re .re a {float: right;}
+.fav-re .re a:hover{color:#ebbf5f;text-decoration: none;}
+
+.border-right h1 {font-size:2em;font-weight: bold;}
+.main-desc {padding:15px 0 15px  !important ;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;background: white;}
+.desc-side .border-right {border-right: 1px solid;;padding:0 10px 0 0  !important;}
+
+.h-bl {color : rgb(51, 51, 51);}
+.li-desc li {height: 20px;}
+.li-desc li h5 {display: inline;font-size:13px;font-weight: bold;}
+.li-desc li a:hover{color:#b88c2c;}
+
+.rate-side {color: rgb(51, 51, 51);font-size: 13px;margin-left:0 !important;}
+.rate-side .icon-red {
+	background: #df091e;
+	height: 40px;
+/*	margin-left: 20px;
+*/	padding: 0 10px 0 10px !important;
+	text-align: center;
+}
+.rate-side .icon-red p {margin: 0 !important;color:white;font-weight: bold;font-size:23px;top:50%;transform: translateY(-50%);position: relative;}
+.rate-side .col {padding-left: 15px ;}
+.rate-side .col p {margin-bottom: 5px !important;}
+
+.rate-star {margin: 0;}
+.rate-star li {display: inline;}
+.rate-star li i {font-size: 20px;color:rgb(227, 227, 227)}
+.active {color:#fde16d !important;cursor: pointer;}
+
+
+.oth-movie p {
+	padding: 9px;
+	background: rgb(242, 162, 35);
+	color:white;
+	font-size: 16px;
+	border-radius: 2px;
+	margin-top:35px;
+
+}
+
+
+
+
+
+

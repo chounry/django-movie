@@ -1,0 +1,28 @@
+
+
+
+.filter {margin: 50px 0 15px }
+.filter-btn a {
+	padding: 10px;
+	background: rgb(242, 162, 35)/*white*/;
+	border-radius:  2px;
+	color:white/*#666666*/;
+	font-size: 13px;
+	font-weight: bold;
+
+}
+.filter a:hover {background: #F5F5F5;color:#666666;text-decoration: none;}
+
+.pagination li a {
+	margin: 0 5px 0 5px;
+	padding: 7px 10px 7px 10px;
+	border-radius: 2px;
+	color:white/*;rgb(102, 102, 102)*/;
+	background: rgb(242, 162, 35);
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: none;
+}
+.pagination li a:hover{background: #F5F5F5;color:  #666666;}
+
+.under-movie {padding-bottom: 12px; }

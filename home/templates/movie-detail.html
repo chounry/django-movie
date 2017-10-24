@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block title %}Movie | Transfomer{% endblock title %}
+{% load staticfiles %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'own/css/movie-detail.css' %}">
+
+{% endblock link %}
+{% block content %}
+	<div class="container" style="margin-top:30px;">
+		<div class="row video">
+			<video width="1056" height="600" controls style="background: black;">
+				<source src="{{ instance.video.url }}" type="video/mp4">
+			</video>
+		</div>
+		<div class="row fav-re">
+			<div class="col-sm-6 fav">
+				<a href="#"><i class="fa fa-heart" aria-hidden="true"></i>  Favorite</a>
+			</div>
+			<div class="col re"> 
+				<a href="#"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  Report</a>
+			</div>
+		</div>
+		<!-- Movie description -->
+		<div class="row main-desc">
+
+
+			<div class="col-sm-8">
+				<div class="row desc-side">
+
+					<!-- Movie img -->
+					<div class="col-sm-3"><img src="{{ instance.img.url }}" class="img-thumbnail"></div>
+					
+
+					<!-- Caption -->
+					<div class="col no-gutters border-right" >
+
+						<h1 class="h-bl" data-movie-Id="3" >Transformer</h1>
+
+						<p>Junction 48 is the love story of two young Palestinian hip-hop artists who use their music to fight against both the external oppression of Israeli society and the internal repression of their own crime-ridden, conservative community. It depicts a new generation of young Arabs who seek normality through their love and music - and against all odds.</p>
+
+						<!-- country,release,genre,resolution -->
+						<ul class="li-desc">
+							<li>
+								<h5 class="h-bl">Genre : </h5>
+								<a href="#">Action</a>,
+								<a href="#">Action</a>,
+								<a href="#">Action</a>,
+							</li>
+							<li> 
+								<h5 class="h-bl">Country : </h5>
+								<a href="#">English</a>
+							</li>
+							<li>
+								<h5 class="h-bl">Release : </h5>
+								<a href="#">2017</a>
+							</li>
+							<li>
+								<h5 class="h-bl">Quality : </h5>
+								<a href="#">HD</a>
+							</li>
+						</ul>
+
+	
+
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Rating -->
+			<div class="col ">
+				<div class="row rate-side">
+
+					<div class="col-sm-2 icon-red"><p>7.5<p></div>
+					<div class="col">
+						<p>RATING(1134)</p>
+						<div>
+							<ul class="rate-star">
+								<li><i class="fa fa-star" data-value="1" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="2" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="3" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="4" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="5" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="6" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="7" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="8" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="9" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" data-value="10" aria-hidden="true"></i></li>
+							</ul>
+						</div>
+						<i class="fa fa-circle-o-notch fa-spin fa-fw" style="font-size: 20px;margin-top: 5px;display: none;color:#ccc;"></i>
+						<!-- <span class="sr-only">Loading...</span> -->
+					</div>
+				</div>
+			</div>
+			<!-- End Rating -->
+
+		</div>
+		<!-- End movie description -->
+
+		<!-- Other movie -->
+		<div class="row oth-movie">
+			<p>YOU MIGHT ALSO LIKE</p>
+	            <div class="box">
+
+	                <!-- Movie -->
+	                <div class="movie">
+	                    <div class="movie-image">
+	                        <a href="#">
+	                            <span class="res-icon">HD</span>
+	                            <span class="play">
+	                                <span class="name">ANGELS &amp; DEMONS</span>
+	                            </span>    
+	                            <img src="{% static 'own/css/images/coming.jpg' %}" alt="movie" />
+	                        </a>
+	                    </div>
+	                </div>
+	                <!-- end Movie -->
+	                <div class="cl">&nbsp;</div>
+	            </div>
+		</div>
+	<!-- End Other movie -->
+	<script type="text/javascript">
+		var clicked;
+		var stars = $(".rate-star li");
+		var restarted = true;
+
+		function get_number(elem){
+			var value = elem.text().match('[.0-9,]+')
+			console.log(value)
+			var num = value.toString().split(',').toString();
+			return parseFloat(num);
+		}
+
+
+		function setColor(elem){
+			$(elem).children().addClass("active");
+		}
+
+		$(stars).hover(function(){
+			click = false;
+			var i;
+
+			var selected = stars.slice(0,stars.index(this)+1);
+
+			for(i=0;i<=stars.index(this)+1;i++){
+				setColor(selected.eq(i));// 3 star = 10 p,2 start = 5p
+			}								// (2 * 5) + (3 * 10) / 10 + 5 = 2.6 rate
+											// add mor 4 star = 1 p ;
+											// 2.6 * total_rater = ((2*5)+(3*10)) = 39 = berfor divide total_rater
+											//rate = (39 + 4(new_rater)) / total_rater + 1
+			$(this).click(function(){
+
+				if(restarted){
+					$(".rate-side .col i").show();
+					
+					var value_star = $(this).children().first().data("value");
+					var rater = $(".rate-side .col p");
+					var rating = $(".icon-red p");
+					var new_rate;
+					console.log($(".h-bl").data('movieId'))
+
+				    $.get("http://127.0.0.1:8000/add-rate/", // sent request to server to change DB
+					{
+					    movie_id: 5,
+					    rate: 5
+					},)
+					
+					rater = get_number(rater);
+					rating = get_number(rating);
+					
+					new_rate = rating * rater;
+					new_rate = (new_rate + value_star) / (rater + 1);
+
+					rating.text(value_star); 
+					restarted = false;
+				}
+
+				click = true;
+				return click;
+			})
+
+		},function(){
+			if(click){
+				return;
+			}
+			stars.children().removeClass("active");
+		})
+
+		
+		
+	</script>
+	</div>
+
+
+<!--  -->
+
+{% endblock content %}

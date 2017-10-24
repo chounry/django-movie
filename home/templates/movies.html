@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Movies | All{% endblock title %}
+
+{% load staticfiles %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'own/css/movies.css' %}">
+{% endblock link %}
+{% block content %}
+	<div class="container">
+		<div class="top-padd"></div>
+
+		<!-- Filter -->
+		<div class="row justify-content-md-end filter">
+			<div class="col-sm-8">
+				Filter setting
+			</div>
+			<div class="col-sm-2 filter-btn">
+				<a href="#"><i class="fa fa-sort" aria-hidden="true"></i> Filter</a>
+			</div>
+		</div>
+		<!-- End Filter -->
+
+		<!-- Pagination -->
+			<div class="row justify-content-md-center">
+				<ul class="pagination">
+					<li><a href="#" class="primary">Previous</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">Next</a></li>
+				</ul>
+			</div>
+		<!-- End Pagination -->
+
+		<!-- Movies -->
+		<div class="row">
+            <div class="box">
+
+                <!-- Movie -->
+                <div class="movie">
+                    <div class="movie-image">
+                        <a href="#">
+                            <span class="res-icon">HD</span>
+                            <span class="play">
+                                <span class="name">ANGELS &amp; DEMONS</span>
+                            </span>    
+                            <img src="{% static 'own/css/images/coming.jpg' %}" alt="movie" />
+                        </a>
+                    </div>
+                    <div class="under-movie">&nbsp;</div>
+                </div>
+                <!-- end Movie -->
+
+
+
+                </div>
+            </div>  
+
+		</div>
+{% endblock content %}
