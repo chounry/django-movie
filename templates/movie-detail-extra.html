@@ -1,0 +1,66 @@
+<div class="col-sm-8">
+    <div class="row desc-side">
+
+      <!-- Movie img -->
+      <div class="col-sm-3"><img src="{{ instance.img.url }}" class="img-thumbnail"></div>
+
+      <!-- Caption -->
+      <div class="col no-gutters border-right" >
+        <h1 class="h-bl" data-movie-Id="3" >{{ instance.title }}</h1>
+        <p>{{ instance.caption }}</p>
+
+        <!-- country,release,genre,resolution -->
+        <ul class="li-desc">
+          <li>
+            <h5 class="h-bl">Genre : </h5>
+            {% for genre in instance.genre.all %}
+            <a href="#">{{ genre.name | capfirst }}</a>,
+            {% endfor %}
+
+          </li>
+          <li>
+            <h5 class="h-bl">Country : </h5>
+            <a href="#">{{ instance.language|capfirst }}</a>
+          </li>
+          <li>
+            <h5 class="h-bl">Release : </h5>
+            <a href="#">{{ instance.release }}</a>
+          </li>
+          <li>
+            <h5 class="h-bl">Quality : </h5>
+            <a href="#">{{ instance.reso|upper }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+
+<!-- Rating -->
+<div class="col ">
+  <div class="row rate-side">
+
+    <div class="col-sm-2 icon-red"><p>{{ instance.rate_aver }}<p></div>
+    <div class="col">
+      <p>RATING({{ instance.number_rater }})</p>
+      <div>
+        <ul class="rate-star">
+          <li><i class="fa fa-star" data-value="1" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="2" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="3" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="4" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="5" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="6" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="7" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="8" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="9" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" data-value="10" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+      <p>
+        <i class="loading fa fa-circle-o-notch fa-spin fa-fw" style="font-size: 20px;margin-top: 5px;display: none;color:#ccc;"></i>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- End Rating -->

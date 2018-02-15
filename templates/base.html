@@ -8,7 +8,7 @@
 		<!-- <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.css'%}"> -->
 <!-- 		<link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap-grid.css'%}">
 		<link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap-grid.min.css'%}"> -->
-		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap4/css/bootstrap.min.css' %}"> 
+		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
 		<link rel="stylesheet" href="{% static 'own/css/general.css' %}">
 		<link rel="stylesheet" href="{% static 'own/css/home.css' %}" type="text/css" media="all" />
 		<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
@@ -17,7 +17,7 @@
 		<!--[if IE 6]>
 			<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
 		<![endif]-->
-		
+
 	</head>
 	<body>
 		<!-- Shell -->
@@ -34,7 +34,7 @@
 					    <li><a class="rss" href="#">rss</a></li>
 					</ul>
 				</div>
-				
+
 				<!-- Navigation -->
 				<div id="navigation">
 					<ul>
@@ -45,11 +45,11 @@
 					</ul>
 				</div>
 				<!-- end Navigation -->
-				
+
 				<!-- Sub-menu -->
 				<div id="sub-navigation">
 					<ul>
-					    <li><a href="{% url 'movie:movies' %}">MOVIES</a></li>
+					    <li><a href="{% url 'movie:film' %}">MOVIES</a></li>
 					    <li class="genre">
 					    	<a href="#">GENRE</a>
 			    			<div class="subcontainer genre-sub" style="display: none;">
@@ -97,14 +97,14 @@
 					</ul>
 					<div id="search">
 						<form action="home_submit" method="get" accept-charset="utf-8">
-							<label for="search-field">SEARCH</label>					
+							<label for="search-field">SEARCH</label>
 							<input type="text" name="search field" value="Enter search here" id="search-field" title="Enter search here" class="blink search-field"  />
 							<input type="submit" value="GO!" class="search-button" />
 						</form>
 					</div>
 				</div>
 				<!-- end Sub-Menu -->
-				
+
 			</div>
 			<!-- end Header -->
 
@@ -129,7 +129,7 @@
 		</div>
 		<!-- end Footer -->
 		<!-- end Shell -->
-	
+
 		<script type="text/javascript">
 			$(document).ready(function(){
 
@@ -150,6 +150,6 @@
 			})
 
 		</script>
-		
+
 	</body>
 </html>

@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block title %}Movie | HUNTER{% endblock title %}
 <!-- Main -->
-{% block content %} 
+{% block content %}
     <div id="main">
         <!-- Content -->
         <div id="content">
@@ -13,120 +13,76 @@
                     <h2>LATEST</h2>
                     <p class="text-right"><a class="a_underline" href="#">See all</a></p>
                 </div>
-                
+
                 <!-- Movie -->
-                {% for  movie in all_movies %}
+                {% for  movie in latest %}
                     <div class="movie last">
                         <div class="movie-image">
-                            <a href="#">
-                                <span class="res-icon">{{ movie.resolution }}</span>
+                            <a href="{{ movie.get_absolute_url }}">
+                                <span class="res-icon">{% filter upper %}{{ movie.reso }}{% endfilter %}</span>
                                 <span class="play">
                                     <span class="name">{{ movie.title }}</span>
-                                </span><img src="{{ movie.img }}" alt="movie" />
+                                </span><img src="{{ movie.img.url }}" alt="movie" />
                             </a>
-                        </div>
-                        <div class="rating">
-                            <p>RATING</p>
-                            <div class="stars">
-                                <div class="stars-in">
-                                    
-                                </div>
-                            </div>
-                            <span class="comments">12</span>
                         </div>
                     </div>
                 {% endfor %}
-                <div class="movie">
-                    <div class="movie-image">
-                        <a href="#">
-                            <span class="res-icon">HD</span>
-                            <span class="play">
-                                <span class="name">ANGELS &amp; DEMONS</span>
-                            </span>    
-                            <img src="{% static 'own/css/images/coming.jpg' %}" alt="movie" />
-                        </a>
-                    </div>  
-<!--                     <div class="rating">
-                        <p>RATING</p>
-                        <div class="stars">
-                            <div class="stars-in">
-                                
-                            </div>
-                        </div>
-                        <span class="comments">12</span>
-                    </div> -->
-                </div>
-                    <!-- end Movie -->
-                
+                <!-- End movie -->
+
                 <div class="cl">&nbsp;</div>
             </div>
             <!-- end Box Latest -->
-            
-            <!-- Box Top Rate -->
-            <div class="box">
-                <div class="head">
-                    <h2>TOP RATED</h2>
-                    <p class="text-right"><a class="a_underline" href="#">See all</a></p>
-                </div>
 
-                <!-- Movie -->
-                <div class="movie">
-                    <div class="movie-image">
-                        <a href="#">
-                            <span class="res-icon">HD</span>
-                            <span class="play">
-                                <span class="name">ANGELS &amp; DEMONS</span>
-                            </span>    
-                            <img src="{% static 'own/css/images/coming.jpg' %}" alt="movie" />
-                        </a>
-                    </div>	
-<!--                     <div class="rating">
-                        <p>RATING</p>
-                        <div class="stars">
-                            <div class="stars-in">
-                                
-                            </div>
-                        </div>
-                        <span class="comments">12</span>
-                    </div> -->
-                </div>
-                <!-- end Movie -->
-                <div class="cl">&nbsp;</div>
-            </div>
-            <!-- end Box Top Rate -->
-            
-            <!-- Box Most Comment -->
+            <!-- Most popular -->
             <div class="box">
                 <div class="head">
                     <h2>MOST POPULAR</h2>
                     <p class="text-right"><a class="a_underline" href="#">See all</a></p>
                 </div>
-                
+
                 <!-- Movie -->
-                <div class="movie last">
-                    <div class="movie-image">
-                        <span class="res-icon">HD</span>
-                        <a href="#">
-                            <span class="play">
-                                <span class="name">THE PRESTIGE</span>
-                            </span><img src="css/images/movie18.jpg" alt="movie" />
-                        </a>
-                    </div>	
-                    <div class="rating">
-                        <p>RATING</p>
-                        <div class="stars">
-                            <div class="stars-in">
-                                
-                            </div>
-                        </div>
-                        <span class="comments">12</span>
-                    </div>
-                </div>
+                {% for movie in popular %}
+                  <div class="movie last">
+                      <div class="movie-image">
+                          <a href="{{ movie.get_absolute_url }}">
+                              <span class="res-icon">{% filter upper %}{{ movie.reso }}{% endfilter %}</span>
+                              <span class="play">
+                                  <span class="name">{{ movie.title }}</span>
+                              </span><img src="{{ movie.img.url }}" alt="movie" />
+                          </a>
+                      </div>
+                  </div>
+                {% endfor %}
                 <!-- end Movie -->
                 <div class="cl">&nbsp;</div>
             </div>
-            <!-- end Box Top Comment -->
-            
+            <!-- end Most popular -->
+
+            <!-- Tv-series -->
+            <div class="box">
+                <div class="head">
+                    <h2>TV SERIES</h2>
+                    <p class="text-right"><a class="a_underline" href="#">See all</a></p>
+                </div>
+
+                <!-- Movie -->
+                {% for movie in tv %}
+                  <div class="movie last">
+                      <div class="movie-image">
+                          <a href="{{ movie.get_absolute_url }}">
+                              <span class="res-icon">{% filter upper %}{{ movie.movie.reso }}{% endfilter %}</span>
+                              <span class="play">
+                                  <span class="name">{{ movie.title }}</span>
+                              </span><img src="{{ movie.movie.img.url }}" alt="movie" />
+                          </a>
+                      </div>
+                  </div>
+                {% endfor %}
+                <!-- end Movie -->
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end Tv-series -->
+
         </div>
         <!-- end Content -->
 
@@ -136,7 +92,7 @@
                 <h3>NEWS</h3>
                 <p class="text-right"><a class="a_underline" href="#">See all</a></p>
             </div>
-            
+
             <div class="content">
                 <p class="date">12.04.09</p>
                 <h4>Disney's A Christmas Carol</h4>
@@ -157,7 +113,7 @@
             </div>
         </div>
         <!-- end NEWS -->
-        
+
         <!-- Coming -->
         <div id="coming">
             <div class="head">

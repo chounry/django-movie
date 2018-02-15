@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+{% block title %}Movies | All{% endblock title %}
+
+{% load staticfiles %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'own/css/movies.css' %}">
+{% endblock link %}
+{% block content %}
+	<div class="container">
+		<div class="top-padd" style="margin-top:50px;"></div>
+
+		<!-- Filter -->
+		<div class="row justify-content-end">
+			<div class="col-sm-2 filter-btn">
+				<a href="" onclick="return false;"><i class="fa fa-sort" aria-hidden="true"></i> Filter</a>
+			</div>
+		</div>
+
+			<!-- Filter setting  -->
+		<div class="container filter-win" style="background:#262626">
+			<div class="container filter-sett">
+				<div class="row">
+
+					<!-- Film type filter  -->
+					<div class="col-sm-4">
+						<h3>Film Type</h3>
+						<div class="filter-each-box">
+							<ul>
+								<li>
+									<input type="checkbox" class='default-checked' name="film-type" value="All" />
+									<lable for="b">All</lable>
+								</li>
+								<li>
+									<input type="checkbox" name="film-type" value="movie" />
+									<label>Movies</label>
+								</li>
+								<li>
+									<input type="checkbox" name="film-type" value="tv" />
+									<label>TV Series</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- End film type filter  -->
+
+					<!-- Resolution Filter -->
+					<div class="col-sm-5 ml-auto">
+						<h3>Resolution</h3>
+						<div class="filter-each-box">
+							<ul>
+								<li>
+									<input type="checkbox" id='reso' class='default-checked' name="reso-box" value="all" />
+									<label>All</label>
+								</li>
+								<li>
+									<input type="checkbox" name="reso-box" value="hd" />
+									<label>HD</label>
+								</li>
+								<li>
+									<input type="checkbox" name="reso-box" value="sd" />
+									<label>SD</label>
+								</li>
+								<li>
+									<input type="checkbox" name="reso-box" value="cam" />
+									<label>CAM</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- End Resolution Fileter  -->
+				</div>
+
+				<!-- Genre filter -->
+				<div class="row">
+						<div class="col">
+							<h3>Genre</h3>
+							<div class="filter-each-box">
+								<ul>
+									{% for genre in }
+									<li>
+										<input type="checkbox" name="" value="" />
+										<label>HD</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				<!-- End Genre filter  -->
+
+				<!-- Country filter -->
+				<div class="row">
+						<div class="col">
+							<h3>Country</h3>
+							<div class="filter-each-box">
+								<ul>
+									<li>
+										<input type="checkbox" name="" value="HD" />
+										<label>HD</label>
+									</li>
+									<li>
+										<input type="checkbox" name="" value="sd" />
+										<label>SD</label>
+									</li>
+									<li>
+										<input type="checkbox" name="" value="cam" />
+										<label>CAM</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				<!-- End Country filter  -->
+
+				<!-- Release filter -->
+				<div class="row">
+						<div class="col">
+							<h3>Release</h3>
+							<div class="filter-each-box">
+								<ul>
+									<li>
+										<input type="checkbox" name="All" value="HD" />
+										<label>HD</label>
+									</li>
+									<li>
+										<input type="checkbox" name="All" value="sd" />
+										<label>SD</label>
+									</li>
+									<li>
+										<input type="checkbox" name="All" value="cam" />
+										<label>CAM</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				<!-- End release filter -->
+				<div class="row justify-content-center" >
+					<div class="col-sm-3 filter-cfm-btn" style="text-align:center">
+						<a href="#">Confirm Filter</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- End Filter setting -->
+		<!-- End Filter -->
+
+		<!-- Pagination -->
+			<div class="row justify-content-md-center">
+				<ul class="pagination">
+					<li><a href="#" class="primary">Previous</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">Next</a></li>
+				</ul>
+			</div>
+		<!-- End Pagination -->
+
+		<!-- Movies -->
+		<div class="row">
+      <div class="box">
+
+          <!-- Film -->
+					{% for movie in films %}
+						<!-- Tv -->
+						{% if movie.movie %}
+		          <div class="movie">
+		              <div class="movie-image">
+		                  <a href="{{ movie.get_absolute_url }}">
+		                      <span class="res-icon">{% filter upper %}{{ movie.movie.reso }}{% endfilter %}</span>
+		                      <span class="play">
+		                          <span class="name">{{ movie.tilte|capfirst }}</span>
+		                      </span>
+		                      <img src="{{ movie.movie.img.url }}" alt="img" />
+		                  </a>
+		              </div>
+		              <div class="under-movie">&nbsp;</div>
+		          </div>
+						<!-- Movie -->
+						{%  else %}
+							<div class="movie">
+		              <div class="movie-image">
+		                  <a href="{{ movie.get_absolute_url }}">
+		                      <span class="res-icon">{% filter upper %}{{ movie.reso }}{% endfilter %}</span>
+		                      <span class="play">
+		                          <span class="name">{{ movie.title|capfirst }}</span>
+		                      </span>
+		                      <img src="{{ movie.img.url }}" alt="img" />
+		                  </a>
+		              </div>
+		              <div class="under-movie">&nbsp;</div>
+		          </div>
+						{% endif %}
+					{% endfor %}
+          <!-- end Movie -->
+        </div>
+      </div>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var confirm_clicked = false;
+
+				function resetBoxs(boxInput){
+					$(boxInput).each(function(){
+						$(this).prop('checked',false);
+					})
+				}
+
+        // ---> Filter window filter slide
+				var filter_clicked = false
+				$(".filter-btn a").click(function(){
+					if(filter_clicked == false){
+						$(".filter-win").slideDown(300);
+						filter_clicked = true;
+
+					}else{
+						$(".filter-win").slideUp(400);
+						filter_clicked = false;
+					}
+				})
+				// End window filter slide <-------
+				resetBoxs($('input'))
+
+				$('.default-checked').prop('checked',true);
+				//----> Film type Filter option
+				var film_typeBoxs = $("input[name=film-type]");
+				var type_selected = 'all';
+				$(film_typeBoxs).click(function(){
+					var tem = $(this);
+					type_selected = tem.val()
+					resetBoxs(film_typeBoxs);
+					$(tem).prop('checked',true);
+				})
+				//End filme type filter option ----->
+
+				//----> Resolution filter
+				var reso_boxs = $('input[name=reso-box]');
+				var allOptBox = $('#reso') ;// strore all box option (only one box)
+				$(reso_boxs).click(function(e){
+					var value = $(this).val();
+					if(value == 'all'){
+						resetBoxs(reso_boxs);
+						allOptBox = $(this);
+						$(this).prop('checked',true);
+					}else{
+						allOptBox.prop('checked',false);
+					}
+				})
+				// End resolution filter ----->
+
+				// -----> Genre filter <---------
+				var genre_boxs = $('input[name=genre]');
+
+				// ------> Country filter <--------
+				var country_boxs = $('input[name=country]');
+
+				//----> Release filter <--------
+				var release_boxs = $('input[name=release]');
+				var respone;
+				$('.filter-cfm-btn a').click(function(e){
+					e.preventDefault();
+
+					var release_selected = ['all'];
+					var country_selected = ['all'];
+					var genre_selected = ['all'];
+					var reso_selected = ['all'];
+
+					// creating url for filter
+					var url_filter = [ 'http://127.0.0.1:8000/filter', type_selected ];
+					// filme_type, resolution , genre, country, release
+
+					// resolution
+					$.each($('input[name=reso-box]:checked'),function(){
+						if(reso_selected[0] == 'all'){
+								reso_selected.splice(0,1);
+						}
+						reso_selected.push($(this).val());
+					})
+					reso_selected = reso_selected.join('-');
+					url_filter.push(reso_selected);
+
+					// genre
+					$.each($('input[name=grenre]:checked'),function(){
+						if(genre_selected[0] == 'all'){
+								genre_selected.splice(0,1);
+						}
+						genre_selected.push($(this).val());
+					})
+					genre_selected = genre_selected.join('-');
+					url_filter.push(genre_selected);
+
+					// country
+					$.each($('input[name=country]:checked'),function(){
+						if(country_selected[0] == 'all'){
+								country_selected.splice(0,1);
+						}
+						country_selected.push($(this).val());
+					})
+					country_selected = country_selected.join('-');
+					url_filter.push(country_selected);
+
+					// release
+					$.each($('input[name=release]:checked'),function(){
+						if(release_selected[0] == 'all'){
+								release_selected.splice(0,1);
+						}
+						release_selected.push($(this).val());
+					})
+					release_selected = release_selected.join('-');
+					url_filter.push(release_selected);
+
+					url_filter = url_filter.join('/');
+					url_filter += '/';
+
+					window.location.href = url_filter;
+
+				})
+			})
+
+		</script>
+{% endblock content %}
