@@ -1,4 +1,4 @@
-# Byte-compiled / optimized / DLL files
+led / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -45,6 +45,7 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+.pytest_cache/
 
 # Translations
 *.mo
@@ -52,7 +53,8 @@ coverage.xml
 
 # Django stuff:
 *.log
-media/*
+.static_storage/
+.media/
 local_settings.py
 
 # Flask stuff:
@@ -101,3 +103,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
